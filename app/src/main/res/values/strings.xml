@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Covid 19 Tracker</string>
+    <string name="confirmed_title_string">Confirmed</string>
+    <string name="active_title_string">Active</string>
+    <string name="deaths_title_string">Deaths</string>
+    <string name="recovered_title_string">Recovered</string>
+    <string name="last_update_title_string">Last Update</string>
+    <string name="sample_test_title_string">Samples Tested</string>
+    <string name="total_tests_title_string">Total Tests</string>
+    <string name="one_case_per_people_string">One Case per People</string>
+    <string name="one_death_per_people_string">One Death per People</string>
+    <string name="one_test_per_people_string">One Test per People</string>
+    <string name="cases_per_one_million_string">Cases per One Million</string>
+    <string name="deaths_per_one_million_string">Deaths per One Million</string>
+    <string name="critical_title_string">Critical</string>
+    <string name="detailed_india_title_string">Detailed Data of India</string>
+    <string name="country_data_title_string">Data of Countries</string>
+    <string name="loading_string">Loading...</string>
+    <string name="state_data_title_string">State Data</string>
+    <string name="district_data_title_string">District Data</string>
+    <string name="total_cases_string">Total Cases</string>
+    <string name="district_string">District</string>
+    <string name="state_string">State</string>
+    <string name="select_language_string">Select Language</string>
+    <string name="country_string">Country</string>
+    <string name="detailed_us_title_string">Detailed Data of United States </string>
+    <string name="population_string">Population</string>
+    <string name="united_states_string">United States</string>
+    <string name="tests_per_one_million_string">Tests Per One Million</string>
+    <string name="covid19_india_url" translatable="false"> <b>covid19india.org</b></string>
+    <string name="about_string">About</string>
+    <string name="credits">\u2022 <b>covid19india.org</b> for India specific API.
+        \n\u2022 <b>corona.lmao.ninja</b> for Global API.
+        \n\u2022 <b>Flaticon</b> for social media icons.
+    </string>
+    <string name="libs">\u2022 <b>Glide</b> for showing flag images.
+        \n\u2022 <b>Eaze Graph</b> for showing Pie charts.
+        \n\u2022 <b>Circle ImageView</b> to show image in a circular frame
+    </string>
+    <string name="software_application_developer_string">Software/Application Developer</string>
+
+</resources>

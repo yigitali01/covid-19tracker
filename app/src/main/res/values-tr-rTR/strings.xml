@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Covid 19 Tracker</string>
+    <string name="confirmed_title_string">Vaka Sayısı</string>
+    <string name="active_title_string">Aktif Vaka</string>
+    <string name="deaths_title_string">Vefat Sayısı</string>
+    <string name="recovered_title_string">İyileşen Sayısı</string>
+    <string name="last_update_title_string">Son Güncelleme</string>
+    <string name="sample_test_title_string">Test Sayısı</string>
+    <string name="total_tests_title_string">Test Sayısı</string>
+    <string name="one_case_per_people_string">Kaç Kişiden Biri Covid-19 Oluyor</string>
+    <string name="one_death_per_people_string">Kaç Kişiden Biri Covid-19\'dan Hayatını Kaybediyor</string>
+    <string name="one_test_per_people_string">Kaç Kişiden Biri Covid-19 Testi Yaptırdı</string>
+    <string name="cases_per_one_million_string">Bir Milyon Kişiden Kaçı Covid-19 Oldu</string>
+    <string name="deaths_per_one_million_string">Bir Milyon Kişiden Kaçı Covid-19\'dan öldü</string>
+    <string name="critical_title_string">Ağır Hasta Sayısı</string>
+    <string name="detailed_india_title_string">Hindistan Detaylı Verileri</string>
+    <string name="country_data_title_string">Ülkelerin Verileri</string>
+    <string name="loading_string">Yükleniyor...</string>
+    <string name="state_data_title_string">Eyalet Verileri</string>
+    <string name="district_data_title_string">Bölge Verileri</string>
+    <string name="total_cases_string">Vaka Sayısı</string>
+    <string name="district_string">Eyalet</string>
+    <string name="state_string">Bölge</string>
+    <string name="select_language_string">Dil Seçiniz</string>
+    <string name="country_string">Ülke</string>
+    <string name="detailed_us_title_string">A.B.D Detaylı Verileri</string>
+    <string name="population_string">Nüfus</string>
+    <string name="united_states_string">A.B.D</string>
+    <string name="tests_per_one_million_string">Bir Milyon Kişi Başına Düşen Test Sayısı</string>
+    <string name="credits">\u2022 Hindistan detaylı verileri <b>covid19india.org</b> üzerinden alınmıştır.
+        \n\u2022 Dünya geneli ve detaylı A.B.D verileri <b>corona.lmao.ninja</b> üzerinden alınmıştır.
+        \n\u2022 Sosyal medya resimleri <b>icon-icons.com</b> sitesinden alınmıştır.
+    </string>
+    <string name="libs">\u2022 Bayraklırın gösterilmesi için <b>Glide</b> kullanıldı.
+        \n\u2022 Dairesel grafik için <b>Eaze Graph</b> kullanıldı.
+        \n\u2022 Resimlerin daire şeklinde gösterilmesi için <b>Circle ImageView</b> kullanıldı.
+    </string>
+    <string name="software_application_developer_string">Yazılım Mühendisi / Uygulama Geliştiricisi</string>
+    <string name="about_string">Hakkımda</string>
+</resources>
