@@ -13,8 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Covid19Tracker">
 
-        <activity android:name=".adapter.EachCountryVaccine"
-            android:screenOrientation="portrait"> </activity>
         <activity android:name=".AboutActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".USDistrictData"
