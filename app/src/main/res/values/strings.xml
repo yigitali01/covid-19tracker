@@ -27,6 +27,7 @@
     <string name="population_string">Population</string>
     <string name="united_states_string">United States</string>
     <string name="tests_per_one_million_string">Tests Per One Million</string>
+    <string name="total_vaccine_string">Total Number of Vaccinations</string>
     <string name="covid19_india_url" translatable="false"> <b>covid19india.org</b></string>
     <string name="about_string">About</string>
     <string name="credits">\u2022 <b>covid19india.org</b> for India specific API.

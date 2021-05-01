@@ -126,13 +126,14 @@
                                         android:textSize="13sp" />
 
                                 </LinearLayout>
+
                             </LinearLayout>
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-
                 </LinearLayout>
+
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -176,6 +177,45 @@
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/activity_main_vaccined_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        app:cardElevation="4dp"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_vaccine_string"
+                                android:gravity="center"
+                                android:textColor="@color/teal_200"
+                                android:layout_marginTop="25dp"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/activity_each_country_data_vaccined_textView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:layout_marginBottom="25dp"
+                                android:textColor="#000"
+                                android:textSize="24sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </GridLayout>
                 <GridLayout
                     android:layout_width="match_parent"
@@ -609,6 +649,8 @@
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+
 
 
             </LinearLayout>

@@ -55,4 +55,8 @@ public class Constants {
     public static final String US_STATE_CASES_PER_ONE_MILLION= "casesPerOneMillion";
     public static final String US_STATE_TESTS_PER_ONE_MILLION= "testsPerOneMillion";
 
+    //Vaccine Data Constants
+
+
+
 }

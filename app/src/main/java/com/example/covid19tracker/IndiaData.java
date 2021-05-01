@@ -196,7 +196,7 @@ public class IndiaData extends AppCompatActivity {
         Date mDate = null;
         String dateFormat;
         try {
-            mDate = new SimpleDateFormat("dd/MM/yyyy HH:mm",Locale.ITALIAN).parse(date);
+            mDate = new SimpleDateFormat("dd/MM/yyyy HH:mm",Locale.getDefault()).parse(date);
 
             if (testCase == 0) {
                 dateFormat = new SimpleDateFormat("dd MMM yyyy, hh:mm a").format(mDate);

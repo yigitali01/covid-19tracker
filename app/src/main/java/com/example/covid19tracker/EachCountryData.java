@@ -11,10 +11,26 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Formatter;
+import java.util.Locale;
 
 import static com.example.covid19tracker.Constants.COUNTRY_ACTIVE;
 import static com.example.covid19tracker.Constants.COUNTRY_CONFIRMED;
@@ -33,11 +49,12 @@ import static com.example.covid19tracker.Constants.COUNTRY_TESTS;
 public class EachCountryData extends AppCompatActivity {
     private TextView tv_confirmed, tv_confirmed_new, tv_active, tv_active_new, tv_death, tv_death_new,
             tv_recovered, tv_recovered_new, tv_critical, tv_tests, tv_one_case_per_people,
-            tv_one_death_per_people, tv_one_test_per_people,tv_population;
+            tv_one_death_per_people, tv_one_test_per_people,tv_population,tv_vaccined;
 
     private String str_countryName, str_confirmed, str_confirmed_new, str_active, str_death, str_death_new,
-            str_recovered, str_one_test_per_people, str_critical, str_one_case_per_people, str_population, str_one_death_per_people, str_recovered_new, str_tests;
-    private PieChart pieChart;
+            str_recovered, str_one_test_per_people, str_vaccined,
+            str_critical, str_one_case_per_people, str_population, str_one_death_per_people, str_recovered_new, str_tests;
+    private PieChart pieChart,vaccine_piechart;
     private MainActivity activity = new MainActivity();
 
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -106,7 +123,7 @@ public class EachCountryData extends AppCompatActivity {
         tv_one_test_per_people = findViewById(R.id.activity_each_country_data_one_tests_per_people_textView);
         tv_critical = findViewById(R.id.activity_each_country_data_critical_textView);
         tv_population = findViewById(R.id.activity_each_country_data_population_textview);
-
+        tv_vaccined = findViewById(R.id.activity_each_country_data_vaccined_textView);
         pieChart = findViewById(R.id.activity_each_country_data_piechart);
         swipeRefreshLayout = findViewById(R.id.activity_each_country_data_swipe_refresh_layout);
 
@@ -115,45 +132,78 @@ public class EachCountryData extends AppCompatActivity {
     public void FetchData() {
         activity.ShowDialog(this);
         pieChart.clearChart();
-        Handler postDelayToshowProgress = new Handler();
-        postDelayToshowProgress.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tv_confirmed.setText(NumberFormat.getInstance().format(Integer.parseInt(str_confirmed)));
-                tv_confirmed_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(str_confirmed_new)));
+        String currentDate = new SimpleDateFormat("M/d/yy", Locale.getDefault()).format(new Date());
+        String url = "https://corona.lmao.ninja/v3/covid-19/vaccine/coverage/countries";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for (int i = 0; i<response.length();i++){
+                                JSONObject jsonObject = response.getJSONObject(i);
+                                if (jsonObject.getString("country").equals(str_countryName)){
+                                   JSONObject jsonTimelineObject = jsonObject.getJSONObject("timeline");
+                                   str_vaccined = jsonTimelineObject.getString(currentDate);
+                                    System.out.println(str_vaccined);
 
-                tv_active.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
+                                }
+
+                            }
+                            Handler postDelayToshowProgress = new Handler();
+                            postDelayToshowProgress.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    tv_confirmed.setText(NumberFormat.getInstance().format(Integer.parseInt(str_confirmed)));
+                                    tv_confirmed_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(str_confirmed_new)));
+
+                                    tv_active.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
                 /*int int_active_new = Integer.parseInt(str_confirmed_new)
                         - (Integer.parseInt(str_recovered_new) + Integer.parseInt(str_death_new));
                 tv_active_new.setText("+"+NumberFormat.getInstance().format(int_active_new<0 ? 0 : int_active_new));*/
-                tv_active_new.setText("N/A");
+                                    tv_active_new.setText("N/A");
 
-                tv_death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-                tv_death_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(str_death_new)));
+                                    tv_death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
+                                    tv_death_new.setText("+" + NumberFormat.getInstance().format(Integer.parseInt(str_death_new)));
 
-                tv_recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
-                //tv_recovered_new.setText("+"+NumberFormat.getInstance().format(Integer.parseInt(str_recovered_new)));
-                tv_recovered_new.setText("N/A");
+                                    tv_recovered.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
+                                    //tv_recovered_new.setText("+"+NumberFormat.getInstance().format(Integer.parseInt(str_recovered_new)));
+                                    tv_recovered_new.setText("N/A");
 
-                tv_tests.setText(NumberFormat.getInstance().format(Integer.parseInt(str_tests)));
+                                    tv_tests.setText(NumberFormat.getInstance().format(Integer.parseInt(str_tests)));
 
-                tv_critical.setText(NumberFormat.getInstance().format(Integer.parseInt(str_critical)));
+                                    tv_critical.setText(NumberFormat.getInstance().format(Integer.parseInt(str_critical)));
 
-                tv_one_case_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_case_per_people)));
-                tv_one_death_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_death_per_people)));
-                tv_one_test_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_test_per_people)));
-                tv_population.setText(NumberFormat.getInstance().format(Integer.parseInt(str_population)));
+                                    tv_one_case_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_case_per_people)));
+                                    tv_one_death_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_death_per_people)));
+                                    tv_one_test_per_people.setText(NumberFormat.getInstance().format(Integer.parseInt(str_one_test_per_people)));
+                                    tv_population.setText(NumberFormat.getInstance().format(Integer.parseInt(str_population)));
+                                    tv_vaccined.setText(NumberFormat.getInstance().format(Integer.parseInt(str_vaccined)));
+                                    //setting piechart
+                                    pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(str_active), Color.parseColor("#007afe")));
+                                    pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(str_recovered), Color.parseColor("#08a045")));
+                                    pieChart.addPieSlice(new PieModel("Deceased", Integer.parseInt(str_death), Color.parseColor("#F6404F")));
+//                                    pieChart.addPieSlice(new PieModel("Vaccined", Integer.parseInt(str_vaccined),Color.parseColor("#FF03DAC5")));
+                                    pieChart.startAnimation();
 
-                //setting piechart
-                pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(str_active), Color.parseColor("#007afe")));
-                pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(str_recovered), Color.parseColor("#08a045")));
-                pieChart.addPieSlice(new PieModel("Deceased", Integer.parseInt(str_death), Color.parseColor("#F6404F")));
+                                    activity.DismissDialog();
+                                }
+                            }, 1000);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
-                pieChart.startAnimation();
 
-                activity.DismissDialog();
+                    }
+
+                    }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
-        }, 1000);
+        });
+
+        requestQueue.add(jsonArrayRequest);
     }
 
     @Override

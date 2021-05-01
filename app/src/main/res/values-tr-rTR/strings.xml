@@ -38,4 +38,5 @@
     </string>
     <string name="software_application_developer_string">Yazılım Mühendisi / Uygulama Geliştiricisi</string>
     <string name="about_string">Hakkımda</string>
+    <string name="total_vaccine_string">Aşılanan Kişi Sayısı</string>
 </resources>

@@ -36,6 +36,7 @@ import org.eazegraph.lib.models.PieModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                                     tv_death.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
                                     tv_death_new.setText("+"+NumberFormat.getInstance().format(Integer.parseInt(str_death_new)));
 
-                                    tv_tests.setText(NumberFormat.getInstance().format(Integer.parseInt(str_tests)));
+                                    tv_tests.setText(NumberFormat.getInstance().format(Long.parseLong(str_tests)));
 
                                     tv_critical.setText(NumberFormat.getInstance().format(Integer.parseInt(str_critical)));
 

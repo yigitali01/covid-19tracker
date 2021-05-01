@@ -12,26 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Covid19Tracker">
-        <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".USDistrictData" />
-        <activity android:name=".USEachStateData" />
-        <activity android:name=".USStateData" />
-        <activity android:name=".UnitedStatesData" />
-        <activity android:name=".SplashScreen">
+
+        <activity android:name=".adapter.EachCountryVaccine"
+            android:screenOrientation="portrait"> </activity>
+        <activity android:name=".AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".USDistrictData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".USEachStateData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".USStateData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UnitedStatesData"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EachCountryData" />
-        <activity android:name=".CountryData" />
-        <activity android:name=".IndiaEachDistrictData" />
-        <activity android:name=".IndiaDistrictData" />
-        <activity android:name=".IndiaEachStateData" />
-        <activity android:name=".IndiaStateData" />
-        <activity android:name=".IndiaData" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".EachCountryData" android:screenOrientation="portrait" />
+        <activity android:name=".CountryData" android:screenOrientation="portrait" />
+        <activity android:name=".IndiaEachDistrictData" android:screenOrientation="portrait" />
+        <activity android:name=".IndiaDistrictData" android:screenOrientation="portrait" />
+        <activity android:name=".IndiaEachStateData" android:screenOrientation="portrait" />
+        <activity android:name=".IndiaStateData" android:screenOrientation="portrait" />
+        <activity android:name=".IndiaData" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
