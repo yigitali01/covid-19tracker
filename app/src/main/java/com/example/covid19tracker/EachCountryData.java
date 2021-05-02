@@ -26,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -132,7 +133,20 @@ public class EachCountryData extends AppCompatActivity {
     public void FetchData() {
         activity.ShowDialog(this);
         pieChart.clearChart();
-        String currentDate = new SimpleDateFormat("M/d/yy", Locale.getDefault()).format(new Date());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("M/d/yy");
+        String currentDate = simpleDateFormat.format(new Date());
+
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(currentDate);
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, -1);
+        Date yesterdayDate = calendar.getTime();
+        String yesterdayStr = simpleDateFormat.format(yesterdayDate);
         String url = "https://corona.lmao.ninja/v3/covid-19/vaccine/coverage/countries";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -144,8 +158,15 @@ public class EachCountryData extends AppCompatActivity {
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 if (jsonObject.getString("country").equals(str_countryName)){
                                    JSONObject jsonTimelineObject = jsonObject.getJSONObject("timeline");
-                                   str_vaccined = jsonTimelineObject.getString(currentDate);
-                                    System.out.println(str_vaccined);
+
+                                    if (str_vaccined==null) {
+                                        str_vaccined = jsonTimelineObject.getString(yesterdayStr);
+                                    }
+                                    else {
+                                        str_vaccined = jsonTimelineObject.getString(currentDate);
+                                    }
+
+                                   System.out.println(str_vaccined);
 
                                 }
 
@@ -191,6 +212,8 @@ public class EachCountryData extends AppCompatActivity {
                             }, 1000);
                         } catch (JSONException e) {
                             e.printStackTrace();
+
+
                         }
 
 
@@ -199,7 +222,7 @@ public class EachCountryData extends AppCompatActivity {
                     }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                        error.printStackTrace();
             }
         });
 
