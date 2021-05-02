@@ -159,11 +159,12 @@ public class EachCountryData extends AppCompatActivity {
                                 if (jsonObject.getString("country").equals(str_countryName)){
                                    JSONObject jsonTimelineObject = jsonObject.getJSONObject("timeline");
 
-                                    if (str_vaccined==null) {
-                                        str_vaccined = jsonTimelineObject.getString(yesterdayStr);
-                                    }
-                                    else {
+                                    if ( jsonTimelineObject.toString().contains(currentDate)) {
                                         str_vaccined = jsonTimelineObject.getString(currentDate);
+                                    }
+                                    else{
+                                        str_vaccined = jsonTimelineObject.getString(yesterdayStr);
+
                                     }
 
                                    System.out.println(str_vaccined);
